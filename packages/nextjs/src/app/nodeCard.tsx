@@ -49,17 +49,21 @@ export default function NodeCard({
             </CardHeader>
             <CardContent className="w-full">
               <div className="text-white">
-                <p className="text-white/50 w-52 overflow-hidden truncate">{String((node as any)[1])}</p>
+                <p className="text-white/50 w-52 overflow-hidden truncate">
+                  {(node as any)[1] && String((node as any)[1])}
+                </p>
               </div>
               <div className=" md:block hidden">
                 <div className="flex items-center justify-between gap-4">
                   <span className="flex gap-1">
                     Price:
-                    <p className="text-white/50">{Number(ethers.utils.formatEther(String((node as any)[3])))} ETH</p>
+                    <p className="text-white/50">
+                      {(node as any)[4] && Number(ethers.utils.formatEther(String((node as any)[3])))} ETH
+                    </p>
                   </span>
                   <span className="flex gap-1">
                     Active Stores:
-                    <p className="text-white/50">{Number((node as any)[2])}</p>
+                    <p className="text-white/50">{(node as any)[2] && Number((node as any)[2])}</p>
                   </span>
                 </div>
               </div>
@@ -67,11 +71,13 @@ export default function NodeCard({
                 <div className="flex flex-col items-center justify-between">
                   <span className="flex gap-1">
                     Price:
-                    <p className="text-white/50">{Number(ethers.utils.formatEther(String((node as any)[3])))} ETH</p>
+                    <p className="text-white/50">
+                      {(node as any)[3] && Number(ethers.utils.formatEther(String((node as any)[3])))} ETH
+                    </p>
                   </span>
                   <span className="flex gap-1">
                     Active Stores:
-                    <p className="text-white/50">{Number((node as any)[2])}</p>
+                    <p className="text-white/50">{(node as any)[2] && Number((node as any)[2])}</p>
                   </span>
                 </div>
               </div>

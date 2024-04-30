@@ -45,9 +45,9 @@ export const QrModal = ({ address }: { address: string }) => {
             {address.substring(0, 10) + "-" + address.substring(address.length - 10)}
           </DialogTitle>
           <DialogDescription className="p-2">
-            <div className="flex flex-col text-center items-center">
+            <p className="flex flex-col text-center items-center">
               <QRCode value={address} />
-            </div>
+            </p>
           </DialogDescription>
           <DialogFooter>
             <p className="pt-2 text-center font-mono text-gray-400 text-sm w-full">
