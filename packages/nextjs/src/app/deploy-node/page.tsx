@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 export default function Page() {
   return (
-    <div className="mt-24  h-screen">
+    <div className="mt-36  min-h-screen pb-20">
       <div className=" items-center justify-center grid">
         <p className=" text-4xl font-bold text-white"> Create New Cluster</p>
         <div className="  grid grid-cols-1 mt-10 lg:grid-cols-2 items-center justify-between    ">

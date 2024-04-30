@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 import MiddleCard from "./components/middlecard"
 import EditButton from "./components/EditButton"
 
-
-
 import { CopyIcon } from "@radix-ui/react-icons"
 import { useToast } from "@/components/ui/use-toast"
 import { QrCodeIcon } from "@heroicons/react/24/solid"
@@ -23,30 +21,32 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { useAccount, useWriteContract, useReadContract } from "wagmi"
 import { useEffect, useState } from "react"
-import config from "../../../config";
+import config from "../../../config"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-import { formatEther, parseEther } from 'viem'
-import { DialogClose } from "@radix-ui/react-dialog";
+import { formatEther, parseEther } from "viem"
+import { DialogClose } from "@radix-ui/react-dialog"
 import { useRouter } from "next/navigation"
 
-const DEFAULT_STAKE = parseEther("0.1");
+const DEFAULT_STAKE = parseEther("0.1")
 
 const Page = () => {
   const router = useRouter()
-  const [myNodeAddress, setMyNodeAddress] = useState();
+  const [myNodeAddress, setMyNodeAddress] = useState()
 
-
-
-  const { data: storeNode, isFetched: isFetchedNode, error: nodeErr } = useReadContract({
+  const {
+    data: storeNode,
+    isFetched: isFetchedNode,
+    error: nodeErr,
+  } = useReadContract({
     address: config.scytale.address,
     abi: config.scytale.abi,
     functionName: "storeNodes",
     args: [myNodeAddress],
   })
 
-  let nodeStake, apiUrl, activeMessages, price;
+  let nodeStake, apiUrl, activeMessages, price
   if (storeNode) {
     nodeStake = storeNode[0]
     apiUrl = storeNode[1]
@@ -54,36 +54,30 @@ const Page = () => {
     price = storeNode[3]
   }
 
-
   const getMyNode = async () => {
     try {
-      const res = await fetch("http://localhost:8080/getAddress"); //to get local node data if it is working
+      const res = await fetch("http://localhost:8080/getAddress") //to get local node data if it is working
       if (res.ok) {
-        let json = await res.json();
-        setMyNodeAddress(json);
-
+        let json = await res.json()
+        setMyNodeAddress(json)
       } else {
         router.replace("/deploy-node")
       }
     } catch (e) {
       router.replace("/deploy-node")
     }
-
   }
 
   useEffect(() => {
-    getMyNode();
+    getMyNode()
   }, [])
 
-
-
   return (
-    <div className="container mx-auto justify-center items-center mt-20 px-4">
-      <div className="text-xl font-bold text-white mt-8 ">My Node</div>
+    <div className="container mx-auto justify-center items-center mt-20 px-4 pt-12">
+      <div className="text-xl font-bold text-white mt-20">My Node</div>
 
       <div className="mt-4 ">
-        <span className=" font-medium">Address:</span>{" "}
-        <span className=" text-sm text-gray-400">{myNodeAddress}</span>
+        <span className=" font-medium">Address:</span> <span className=" text-sm text-gray-400">{myNodeAddress}</span>
         <EditButton />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:grid-cols-4 gap-4">
@@ -97,10 +91,10 @@ const Page = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 mt-6 lg:grid-cols-3 gap-4">
         <MiddleCard title="Stake Balance" bottom=" Deposit">
-          <div className=" mt-5 mb-5 font-bold text-center text-3xl text-white">{nodeStake ? formatEther(nodeStake) : 0} ETH</div>
-          <div className="flex justify-center gap-8 mt-10 items-center ">
-            {" "}
+          <div className=" mt-5 mb-5 font-bold text-center text-3xl text-white">
+            {nodeStake ? formatEther(nodeStake) : 0} ETH
           </div>
+          <div className="flex justify-center gap-8 mt-10 items-center "> </div>
         </MiddleCard>
         <MiddleCard title="Active messages" bottom=" ">
           <div className=" mt-5 mb-5 font-bold text-center text-3xl text-white">{activeMessages?.toString()}</div>
@@ -110,10 +104,11 @@ const Page = () => {
           </div>
         </MiddleCard>
         <MiddleCard title="Current Price" bottom="">
-          <div className=" mt-5 mb-5 font-bold text-center text-3xl text-white"> {price ? formatEther(price) : 0} ETH</div>
-          <div className="flex justify-center gap-8 mt-10 items-center ">
+          <div className=" mt-5 mb-5 font-bold text-center text-3xl text-white">
             {" "}
+            {price ? formatEther(price) : 0} ETH
           </div>
+          <div className="flex justify-center gap-8 mt-10 items-center "> </div>
         </MiddleCard>
       </div>
     </div>

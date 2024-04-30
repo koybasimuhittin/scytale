@@ -33,7 +33,7 @@ export const NavigationItems = [
   {
     title: "Message",
     icon: null,
-    href: "/message",
+    href: "/",
   },
   {
     title: "All Messages",
@@ -44,11 +44,6 @@ export const NavigationItems = [
     title: "My Node",
     icon: null,
     href: "/node-fe",
-  },
-  {
-    title: "Node Message",
-    icon: null,
-    href: "/node-message",
   },
 ]
 

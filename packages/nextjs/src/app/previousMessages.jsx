@@ -1,6 +1,6 @@
 import { fetchMyMessages, fetchPreviousMessages } from "@/lib/blockchain/scytaleContract"
 import { useRSAContext } from "@/lib/context"
-import config from "../../../config"
+import config from "../../config"
 import { ethers } from "ethers"
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,6 +13,7 @@ export default function PreviousMessages() {
   const provider = ethers.getDefaultProvider("https://scroll-public.scroll-testnet.quiknode.pro/")
 
   const [messages, setMessages] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const fetchMessages = async () => {
     const newMessages = await fetchMyMessages(publicKey, provider)
@@ -26,6 +27,7 @@ export default function PreviousMessages() {
     }
 
     setMessages(finalMsg)
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -33,12 +35,9 @@ export default function PreviousMessages() {
     fetchMessages()
   }, [publicKey])
 
-  useEffect(() => {
-    console.log(messages)
-  }, [messages])
   return (
     <>
-      {messages.length === 0 ? <p className="w-full text-center text-4xl">Messages are fetching...</p> : null}
+      {loading ? <p className="w-full text-center text-4xl mt-20">Messages are fetching...</p> : null}
       <div className="flex gap-10 flex-col">
         {messages.map((msg, index) => {
           return (

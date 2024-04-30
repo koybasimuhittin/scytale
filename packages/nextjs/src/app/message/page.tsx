@@ -1,7 +1,7 @@
 "use client"
 
-import MessageBox from "./messageBox"
-import PreviousMessages from "./previousMessages"
+import MessageBox from "../messageBox"
+import PreviousMessages from "../previousMessages"
 
 export default function Page() {
   return (

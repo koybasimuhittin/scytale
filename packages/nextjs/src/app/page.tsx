@@ -1,7 +1,13 @@
 "use client"
-import { useRSAContext } from "@/lib/context"
 
-export default function Home() {
-  const { publicKey, privateKey, encryptData, decryptData } = useRSAContext()
-  return <></>
+import MessageBox from "./messageBox"
+import PreviousMessages from "./previousMessages"
+
+export default function Page() {
+  return (
+    <div className="mt-20 flex flex-col items-center justify-center gap-12 mb-20">
+      <PreviousMessages />
+      <MessageBox />
+    </div>
+  )
 }

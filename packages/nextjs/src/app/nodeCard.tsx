@@ -1,9 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Address } from "../../components/address"
+import { Address } from "../components/address"
 import { useReadContract } from "wagmi"
-import config from "../../../config"
+import config from "../../config"
 import { ethers } from "ethers"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"

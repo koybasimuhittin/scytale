@@ -20,7 +20,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { fileToBase64 } from "@/lib/utils"
 import NodeList from "./nodeList"
 import { useWriteContract } from "wagmi"
-import config from "../../../config"
+import config from "../../config"
 import { BigNumber } from "ethers"
 
 export default function MessageBox() {
@@ -138,7 +138,7 @@ export default function MessageBox() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-20">
       <Card>
         <CardContent className="p-4 flex flex-col gap-2">
           <div>
