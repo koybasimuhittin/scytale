@@ -28,7 +28,7 @@ export default function NodeCard({
 
   return (
     <>
-      {isFetched && (
+      {isFetched && node && (
         <Button
           className={cn("group", isSelected ? "bg-gray-800" : "hover:bg-gray-800", "w-fit h-full p-2 -translate-x-3")}
           variant="ghost"
