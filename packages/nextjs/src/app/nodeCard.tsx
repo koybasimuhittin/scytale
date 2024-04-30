@@ -60,7 +60,7 @@ export default function NodeCard({
                   <span className="flex gap-1">
                     Price:
                     <p className="text-white/50">
-                      {(node as any)[4] && Number(ethers.utils.formatEther(String((node as any)[3])))} ETH
+                      {(node as any)[3] && Number(ethers.utils.formatEther(String((node as any)[3])))} ETH
                     </p>
                   </span>
                   <span className="flex gap-1">
