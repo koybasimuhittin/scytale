@@ -26,6 +26,8 @@ export default function NodeCard({
     args: [address],
   })
 
+  console.log(node)
+
   return (
     <>
       {isFetched && node && (
