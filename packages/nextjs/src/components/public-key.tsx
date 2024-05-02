@@ -135,7 +135,7 @@ export const PublicKey: React.FunctionComponent<PublicKeyProps> = ({ address, pe
   }
 
   return (
-    <div className="text-center flex justify-center w-fit border rounded-md overflow-scroll">
+    <div className="text-center flex justify-center w-fit border rounded-md overflow-hidden">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
